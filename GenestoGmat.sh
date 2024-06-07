@@ -31,7 +31,7 @@ grep -f "$CSV_FILE" "$GFF_FILE" >>"Output_$OUTPUT_NAME/$OUTPUT_NAME.gff"
 echo "$GFF_FILE filtered based on CSV_FILE. Output written to: $OUTPUT_NAME in Output_$OUTPUT_NAME"
 
 # Make bed File from GFF file
-gff2bed < "Output_$OUTPUT_NAME/$OUTPUT_NAME" > "Output_$OUTPUT_NAME/$OUTPUT_NAME.bed"
+gff2bed < "Output_$OUTPUT_NAME/$OUTPUT_NAME.gff" > "Output_$OUTPUT_NAME/$OUTPUT_NAME.bed"
 echo ".bed file made from filtered $GFF_FILE"
 
 #if bed file has a chr in front of chrom, replace
