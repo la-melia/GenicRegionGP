@@ -7,12 +7,12 @@ set -e #stops script if command fails
 #if the number of arguments  $# are not equal (-ne) to 3, then echo
 #message
 if [ "$#" -ne 4 ]; then
-        echo "Usage: $0 <CSV_FILE> <GFF_FILE> <OUTPUT_NAME> <VCF_FILE>"
+        echo "Usage: $0 <GENE_FILE> <GFF_FILE> <OUTPUT_NAME> <VCF_FILE>"
         exit 1
 fi
 
-# CSV file with gene list (genes are in the second column)
-CSV_FILE="$1"
+# file with gene list, ideally .txt without any other formatting
+GENE_FILE="$1"
 
 # GFF file to filter
 GFF_FILE="$2"
@@ -27,7 +27,7 @@ VCF_FILE="$4"
 mkdir -p "Output_$OUTPUT_NAME"
 
 # Extract gene names
-grep -f "$CSV_FILE" "$GFF_FILE" >>"Output_$OUTPUT_NAME/$OUTPUT_NAME.gff"
+grep -f "$GENE_FILE" "$GFF_FILE" >>"Output_$OUTPUT_NAME/$OUTPUT_NAME.gff"
 echo "$GFF_FILE filtered based on CSV_FILE. Output written to: $OUTPUT_NAME in Output_$OUTPUT_NAME"
 
 # Make bed File from GFF file
